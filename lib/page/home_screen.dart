@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            _showAlertDialog(context);
+            _showSimpleDialog(context);
           },
           child: Text("Aller aux détails"),
         ),
@@ -44,5 +44,31 @@ class HomeScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _showSimpleDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          title: const Text("Choisissez une option"),
+          children: [
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Option 1"),
+            ),
+            SimpleDialogOption(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Option 2"),
+            ),
+          ],
+        );
+      },
+    );
+
   }
 }
