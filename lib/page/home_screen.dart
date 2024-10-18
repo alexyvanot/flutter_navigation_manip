@@ -12,11 +12,37 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            _showSimpleDialog(context);
+            _showBottomSheet(context);
           },
           child: Text("Aller aux détails"),
         ),
       ),
+    );
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 200,
+          color: Colors.amber,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("BottomSheet"),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Fermer"),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
