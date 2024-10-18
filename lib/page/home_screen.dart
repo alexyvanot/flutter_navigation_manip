@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
           onPressed: () async {
             _showBottomSheet(context);
           },
+          onLongPress: () => Navigator.pushNamed(context, "details", arguments: "ID-123"),
           child: Text("Aller aux détails"),
         ),
       ),
@@ -31,12 +32,21 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("BottomSheet"),
+                ListTile(
+                  leading: const Icon(Icons.ac_unit),
+                  title: const Text("Option 1"),
+                  onTap: () => _showSimpleDialog(context),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.access_alarm),
+                  title: const Text("Option 2"),
+                  onTap: () => _showAlertDialog(context),
+                ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text("Fermer"),
+                  child: const Text("Fermer"),
                 ),
               ],
             ),
