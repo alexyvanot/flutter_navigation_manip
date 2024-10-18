@@ -12,14 +12,37 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            var result = await Navigator.pushNamed(context, "/details",
-            arguments: "Hulk");
-            print(result);
+            _showAlertDialog(context);
           },
           child: Text("Aller aux détails"),
         ),
       ),
     );
   }
-}
 
+  void _showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Titre du dialog"),
+          content: Text('Contenu du dialog'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Annuler"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
